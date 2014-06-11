@@ -17,16 +17,32 @@ function phila311Widget_handler(){
 	function GetRecent() {
 		var recentAPI = "https://www.publicstuff.com/api/2.0/requests_list?return_type=json&limit=3&lat=39.94717&lon=-75.160669&nearby=50&callback=?"
 		
-		$.getJSON(recentAPI, function (data) {
-			$("#Phila311RecentList").empty();
-			var i = 0;
-			while(i < data.response.requests.length)
-			{
-				var newEntry = "<p><h3>" + data.response.requests[i].request.title + "</h3></p>";
-				$("#Phila311RecentList").append(newEntry);
-				i++;
-			}	
-		});
+		$.ajax({
+                url:        recentAPI,
+                dataType:   "jsonp", // <== JSON-P request
+                success:    function(data){
+					$("#Phila311RecentList").empty();
+					var i = 0;
+					while(i < data.response.requests.length)
+					{
+						var newEntry = "<p><h3>" + data.response.requests[i].request.title + "</h3></p>";
+						$("#Phila311RecentList").append(newEntry);
+						i++;
+					}
+                }
+        });
+		
+		
+//		$.getJSON(recentAPI, function (data) {
+//			$("#Phila311RecentList").empty();
+//			var i = 0;
+//			while(i < data.response.requests.length)
+//			{
+//				var newEntry = "<p><h3>" + data.response.requests[i].request.title + "</h3></p>";
+//				$("#Phila311RecentList").append(newEntry);
+//				i++;
+//			}	
+//		});
 	}
 </script>
 
