@@ -15,17 +15,17 @@ function phila311Widget_handler(){
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
 	function GetRecent() {
-		var recentAPI = "https://www.publicstuff.com/api/2.0/requests_list?return_type=json&limit=3&lat=39.94717&lon=-75.160669&nearby=50&callback=?"
+		var recentAPI = "http://www.publicstuff.com/api/open311/services.json?jurisdiction_id=philadelphia-pa";
 		
 		$.ajax({
                 url:        recentAPI,
-                dataType:   "jsonp", // <== JSON-P request
+                dataType:   "json", // <== JSON-P request
                 success:    function(data){
 					$("#Phila311RecentList").empty();
 					var i = 0;
-					while(i < data.response.requests.length)
+					while(i < 3)
 					{
-						var newEntry = "<p><h3>" + data.response.requests[i].request.title + "</h3></p>";
+						var newEntry = "<p><strong>" + data[i].group + ": " + data[i].service_name + "</p></strong><p>" + data[i].description + "</p>";
 						$("#Phila311RecentList").append(newEntry);
 						i++;
 					}
