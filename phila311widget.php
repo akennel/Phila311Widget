@@ -82,7 +82,7 @@ float:left;
 }
 
 #Phila311RecentBlock{
-float:left;
+float:right;
 }
 
 </style>
