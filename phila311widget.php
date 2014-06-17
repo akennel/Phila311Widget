@@ -13,9 +13,20 @@ function phila311Widget_handler(){
 
 <head>
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>  
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
 <script type="text/javascript">
 	function GetRecent() {
 		var recentAPI = "https://www.publicstuff.com/api/2.0/requests_list?return_type=json&limit=3&lat=39.9488597&lon=-75.1650253&nearby=5";
+		
+		var myLatlng = new google.maps.LatLng(39.9488597,-75.1650253);
+		var mapOptions = {
+			zoom: 10,
+			center: myLatlng
+		}
+		
+		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 		
 		$.ajax({
                 url:        recentAPI,
@@ -27,7 +38,13 @@ function phila311Widget_handler(){
 					{
 						var newEntry = "<p><strong>" + data.response.requests[i].request.title + "</strong></p>" + "<p>" + data.response.requests[i].request.description + "</p>";
 						$("#Phila311RecentList").append(newEntry);
-						i++;
+												
+						var marker = new google.maps.Marker({    
+							position: new google.maps.LatLng(data.response.requests[i].request.lat, data.response.requests[i].request.lon),    
+							map: map    
+						}); 
+						
+						i++;						
 					}
                 }
         });
@@ -36,13 +53,25 @@ function phila311Widget_handler(){
 
 <script type="text/javascript">
     $(document).ready(function () {	
-		GetRecent();
+		google.maps.event.addDomListener(window, 'load', GetRecent);
+		//GetRecent();
     });
 </script>
 
 </head>
 
 <style>
+
+#map-canvas {
+        height: 50px;
+		width: 50px;
+        margin: 0px;
+        padding: 200px
+}
+
+#Phila311MapBlock{
+float:left;
+}
 
 #Phila311LinkBlock{
 float:left;
@@ -62,9 +91,12 @@ float:left;
 	<span id="Phila311MainWindow">
 		<h1>Philly 311</h1>
 		<div id="Phila311LinkBlock">
-		<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/report-issues">Submit New Request</a></p>
-		<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/issues">Track Request</a></p>
-		<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/newsfeed">News</a></p>
+			<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/report-issues">Submit New Request</a></p>
+			<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/issues">Track Request</a></p>
+			<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/newsfeed">News</a></p>
+		</div>
+		<div id="Phila311MapBlock">
+			<div id="map-canvas" style="width:50; height:45"></div> 
 		</div>
 		<div id="Phila311RecentBlock">
 			<ul id="Phila311RecentList">
