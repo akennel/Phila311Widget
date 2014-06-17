@@ -15,7 +15,7 @@ function phila311Widget_handler(){
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
 	function GetRecent() {
-		var recentAPI = "http://www.publicstuff.com/api/open311/services.json?jurisdiction_id=philadelphia-pa";
+		var recentAPI = "https://www.publicstuff.com/api/2.0/requests_list?return_type=json&limit=3&lat=39.9488597&lon=-75.1650253&nearby=5";
 		
 		$.ajax({
                 url:        recentAPI,
@@ -25,7 +25,7 @@ function phila311Widget_handler(){
 					var i = 0;
 					while(i < 3)
 					{
-						var newEntry = "<p><strong>" + data[i].group + ": " + data[i].service_name + "</p></strong><p>" + data[i].description + "</p>";
+						var newEntry = "<p><strong>" + data.response.requests[i].request.title + "</strong></p>" + "<p>" + data.response.requests[i].request.description + "</p>";
 						$("#Phila311RecentList").append(newEntry);
 						i++;
 					}
@@ -67,7 +67,6 @@ float:left;
 		<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/newsfeed">News</a></p>
 		</div>
 		<div id="Phila311RecentBlock">
-			<h4>Recent Requests</h4>
 			<ul id="Phila311RecentList">
 			</ul>
 		</div>
