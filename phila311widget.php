@@ -27,7 +27,7 @@ function phila311Widget_handler(){
 		}
 		
 		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-		
+		google.maps.event.trigger(map, "resize");
 		$.ajax({
                 url:        recentAPI,
                 dataType:   "json", // <== JSON-P request
@@ -66,7 +66,7 @@ function phila311Widget_handler(){
         height: 50px;
 		width: 50px;
         margin: 0px;
-        padding: 200px
+        padding: 100px
 }
 
 #Phila311MapBlock{
