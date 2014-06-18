@@ -63,10 +63,13 @@ function phila311Widget_handler(){
 <style>
 
 #map-canvas {
-        height: 50px;
-		width: 50px;
+        height: 200px;
+		width: 250px;
         margin: 0px;
-        padding: 100px
+        padding: 0px
+		overflow-x:visible;
+		overflow-y:visible;
+		float:left;
 }
 
 #Phila311MapBlock{
@@ -82,7 +85,7 @@ float:left;
 }
 
 #Phila311RecentBlock{
-float:right;
+float:left;
 }
 
 </style>
@@ -96,7 +99,7 @@ float:right;
 			<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/newsfeed">News</a></p>
 		</div>
 		<div id="Phila311MapBlock">
-			<div id="map-canvas" style="width:50; height:45"></div> 
+			<div id="map-canvas" style="width:250px; height:200px"></div> 
 		</div>
 		<div id="Phila311RecentBlock">
 			<ul id="Phila311RecentList">
