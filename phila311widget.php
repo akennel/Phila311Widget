@@ -25,7 +25,7 @@ float:left;
 
 </style>
 
-<div id="Phila311Widget">
+<div id="Phila311Widget" class="PhilaWidget">
 	<span id="Phila311MainWindow">
 		<h1>Philly 311</h1>
 		<div id="Phila311LinkBlock">
