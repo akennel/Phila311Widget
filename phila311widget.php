@@ -12,7 +12,7 @@ function phila311Widget_handler(){
     $message = <<<EOM
 
 <head>
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
 
 
 </head>
@@ -27,7 +27,7 @@ float:left;
 
 <div id="Phila311Widget" class="PhilaWidget">
 	<span id="Phila311MainWindow">
-		<h1>Philly 311</h1>
+		<h1 class="PhilaWidgetTitle">Philly 311</h1>
 		<div id="Phila311LinkBlock">
 			<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/report-issues">Submit New Request</a></p>
 			<p><a href="http://www.publicstuff.com/pa/philadelphia-pa/issues">Track Request</a></p>
