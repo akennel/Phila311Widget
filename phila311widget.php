@@ -12,7 +12,7 @@ function phila311Widget_handler(){
     $message = <<<EOM
 
 <div id="Phila311Widget" class="PhilaWidget">
-<h1 class="cat-label-top">Philly311</h1>
+<h1 class="PhilaWidgetTitle">Philly311</h1>
 	<span id="Phila311MainWindow">
 		<div id="Phila311LinkBlock">
 			<a href="http://www.publicstuff.com/pa/philadelphia-pa/report-issues">Submit New Request</a>
