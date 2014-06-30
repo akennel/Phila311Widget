@@ -20,17 +20,6 @@ function phila311Widget_handler(){
 			<a href="http://www.publicstuff.com/pa/philadelphia-pa/newsfeed">News</a>
 		</div>
 	</span>
-    <div class="recent-requests">
-        <h2>Recent Service Requests</h2>
-        <ol>
-            <li>Maintenance Residential</li>
-            <li>Rubbish Collection</li>
-            <li>Illegal Dumping</li>
-            <li>Abandoned Automobile</li>
-            <li>Graffiti Removal</li>
-
-        </ol>
-    </div>
 </div>
 
 
